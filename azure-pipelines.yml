@@ -1,23 +1,9 @@
-# Starter pipeline
-
-- task: CmdLine@2
-  inputs:
-    script: 'curl -k -i --request POST --url https://online.acunetix.com/api/v1/scans --header "X-Auth: 1986ad8c0a5b3df4d7028d5f3c06e936cfdfef629c66f48e1829e972e7c755f21" --header "content-type: application/json" --data "{ \"profile_id\" : \"11111111-1111-1111-1111-111111111111\" , \"incremental\" : false , \"schedule\" : { \"disable\" : false , \"start_date\" : null , \"time_sensitive\" : false } , \"user_authorized_to_scan\" : \"yes\" , \"target_id\" : \"9930d31f-aca7-404d-9cc7-624969e7aa82\" }"'
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
-trigger:
-- main
-
-pool:
-  vmImage: ubuntu-latest
-
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+jobs:
+- job: FirstAcunetixJob
+  displayName: First Acunetix Job
+  pool:
+    vmImage: 'ubuntu-latest'
+  steps:
+  - task: CmdLine@2
+    inputs:
+      script: 'curl -k -i --request POST --url https://online.acunetix.com/api/v1/scans --header "X-Auth: 1986ad8c0a5b3df4d7028d5f3c06e936ce97bf7f8b03c4e2085b2ab5176ec91ad" --header "content-type: application/json" --data "{ \"profile_id\" : \"11111111-1111-1111-1111-111111111111\" , \"incremental\" : false , \"schedule\" : { \"disable\" : false , \"start_date\" : null , \"time_sensitive\" : false } , \"user_authorized_to_scan\" : \"yes\" , \"target_id\" : \"9930d31f-aca7-404d-9cc7-624969e7aa82\" }"'
